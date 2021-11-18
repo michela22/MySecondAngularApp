@@ -1,0 +1,36 @@
+<a [routerLink]="[ '/secondaPagina' ]" routerLinkActive="active">Go To</a>
+
+<!-- binding propietà -->
+<img width="56px"  [src] ="icon"/> 
+
+<!--NB NB NB aggiungo componente interno 
+(add figlio al padre user-list ad app) NB NB NB-->
+<!-- faccio binding var user padre con "users" del figlio-->
+<app-user-list [users]="users"
+
+  (selectedUser)="onSelectedUser($event)"> <!-- ora li dico il valore che deve recuperare dal figlio -->
+</app-user-list>
+
+
+
+
+
+<!--quando clicchi sul nome di una rig della tabella 
+il nome e cognome compare sotto-->
+<div *ngIf="selectedUser">
+<h5>{{selectedUser.firstName}} {{selectedUser.lastName}}</h5>
+<div>
+  <label for="firstName"> FirstName: </label>
+                                                            <!--two way Binding lettura e scrittura-->
+<input type="text" id="firstName" (keyup) ="onKeyUp($event)" [(ngModel)]="selectedUser.firstName"/>
+</div>
+<div>
+<label for="lastName"> LastName:"" </label>
+                  <!-- View binding (one way Binding è di sola lettura ) della proprietà [value ] ecc -->
+<input type="text" id="lastName" [value] =" selectedUser.lastName"/>
+</div>
+</div>
+
+<!--User Form, qui il postino sta citofonando al padre, poi su app.component.ts-->
+<app-user-form (emitter)="onNewUser($event)" ></app-user-form>
+
