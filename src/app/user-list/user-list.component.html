@@ -1,0 +1,17 @@
+<div *ngIf="users && users.length >0">
+    <table>
+      <thead>
+        <th>#</th><th>Utente</th>
+      </thead>
+      <!-- Direttiva strutturale FOR-->
+      <!-- Direttiva Attributo ngClass -->
+      <!-- Binding eventi (click)-->
+      <tbody *ngFor="let user of users; index as i">
+        <tr [ngClass]="{'tr-a': (i%2)==0, 'tr-b':(i%2)!=0}"
+          (click)="onClickItem($event ,user)">
+          <td>{{i}}</td>
+          <td>{{user.firstName}} {{user.lastName}}</td>
+    </tr>
+    </tbody>
+    </table>
+  </div>

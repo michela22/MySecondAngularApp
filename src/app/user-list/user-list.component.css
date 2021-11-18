@@ -1,0 +1,19 @@
+table{
+    border: 1px solid black;
+    width: 100%
+}
+
+.tr-a{
+    background-color: lemonchiffon;
+}
+
+.tr-b{
+    background-color: midnightblue;
+    color:white;
+}
+
+/* quando sei sulle righe della
+ tabella il puntatore diventa una manina*/
+table tr{
+    cursor: pointer;
+}

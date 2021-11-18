@@ -1,0 +1,24 @@
+<h5>User form</h5>
+<!--binding con userForm di user-form.components.ts-->     
+<form [formGroup] ="userForm" (ngSubmit) ="onFormSubmit()" > 
+    <!--quando faccio submit da Front End verrà chiamato  onFormSubmit, 
+         metodo che scrivo in  user-form.components.ts -->
+   
+<div>
+       <label for="firstname">FirstName: </label>            <!-- è il valore che ho deciso di controllare in user-form.components.ts -->
+       <input id="firstName" type="text" placeholder="Type you name"  formControlName="firstName"/>
+       <div *ngIf="userForm.invalid && (userForm.get('firstName')!.dirty || userForm.get('firstName')!.touched)">
+         <div *ngIf="userForm.get('firstName')!.errors?.['required']"> Required!!</div>
+       </div>
+</div>
+<div>
+    <label for="lastname">LastName: </label>                            <!-- è il valore che ho deciso di controllare in user-form.components.ts -->
+    <input id="lastname" type="text" placeholder="Type you lastname"  formControlName="lastName"/>
+</div>
+<div>
+    <input type="submit" value="Send" />
+</div>
+<div *ngIf="error">
+    {{error}}
+</div>
+</form>
